@@ -15,7 +15,7 @@
 ![GitHub](https://img.shields.io/github/license/ultraleap/leapc-python-bindings)
 
 Open-source Python bindings for the Gemini LeapC API. Allowing developers to use Ultraleaps Hand Tracking technology
-with Python. Including build instructions and some simple examples to get started with. 
+with Python. Including build instructions and some simple examples to get started with.
 
 ## Getting Started:
 
@@ -28,13 +28,15 @@ To use this plugin you will need the following:
 ## Installation:
 
 This module makes use of a compiled module called `leapc_cffi`. We include some pre-compiled python objects with our
-Gemini installation from 5.17 onwards. Supported versions can be found [here](#pre-compiled-module-support). If you 
+Gemini installation from 5.17 onwards. Supported versions can be found [here](#pre-compiled-module-support). If you
 have the matching python version and have installed Gemini into the default location you can follow the steps below:
 
 ```
+# Install uv if you haven't already: curl -LsSf https://astral.sh/uv/install.sh | sh
 # Create and activate a virtual environment
-pip install -r requirements.txt
-pip install -e leapc-python-api
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e .
 python examples/tracking_event_example.py
 ```
 
@@ -42,7 +44,7 @@ python examples/tracking_event_example.py
 
 This module assumes that you have the Leap SDK installed in the default location. If this is not the case
 for you, you can use an environment variable to define the installation location. Define the environment variable
-`LEAPSDK_INSTALL_LOCATION` to the path of the `LeapSDK` folder, if you have installed to a custom location or moved it 
+`LEAPSDK_INSTALL_LOCATION` to the path of the `LeapSDK` folder, if you have installed to a custom location or moved it
 somewhere else.
 
 Example:
@@ -63,37 +65,38 @@ The included pre-compiled modules within our 5.17 release currently only support
 - Darwin: Python 3.8
 - Linux ARM: Python 3.8, 3.9, 3.10, 3.11
 
-Expanded pre-compiled support will be added soon. However, this does not restrict you to these versions, if you wish to 
+Expanded pre-compiled support will be added soon. However, this does not restrict you to these versions, if you wish to
 use a different python version please follow the instructions below to compile your own module.
 
 ### Missing Compiled Module?
 
 You might not have the correct matching compiled `leapc_cffi` module for your system, this can cause issues when importing
 leap, such as: `ModuleNotFoundError: No module named 'leapc_cffi._leapc_cffi'`
-If you'd like to build your own compiled module, you will still require a Gemini install and a C compiler of your 
+If you'd like to build your own compiled module, you will still require a Gemini install and a C compiler of your
 choice. Follow the steps below:
 
 ```
+# Install uv if you haven't already: curl -LsSf https://astral.sh/uv/install.sh | sh
 # Create and activate a virtual environment
-pip install -r requirements.txt
-python -m build leapc-cffi
-pip install leapc-cffi/dist/leapc_cffi-0.0.1.tar.gz
-pip install -e leapc-python-api
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e leapc-cffi
+uv pip install -e leapc-python-api
 python examples/tracking_event_example.py
 ```
 
 ## Contributing
 
-Our vision is to make it as easy as possible to design the best user experience for hand tracking. 
-We learn and are inspired by the creations from our open source community - any contributions you make are 
+Our vision is to make it as easy as possible to design the best user experience for hand tracking.
+We learn and are inspired by the creations from our open source community - any contributions you make are
 greatly appreciated.
 
 1. Fork the Project
-2. Create your Feature Branch:  
+2. Create your Feature Branch:
    git checkout -b feature/AmazingFeature
-3. Commit your Changes:  
+3. Commit your Changes:
    git commit -m "Add some AmazingFeature"
-4. Push to the Branch:  
+4. Push to the Branch:
    git push origin feature/AmazingFeature
 5. Open a Pull Request
 
@@ -103,5 +106,5 @@ Use of the LeapC Python Bindings is subject to the [Apache V2 License Agreement]
 
 ## Community Support
 
-Our [Discord Server][discord], [Github Discussions][github-discussions] and [Developer Forum][developer-forum] are 
+Our [Discord Server][discord], [Github Discussions][github-discussions] and [Developer Forum][developer-forum] are
 places where you are actively encouraged to share your questions, insights, ideas, feature requests and projects.

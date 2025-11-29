@@ -1,9 +1,12 @@
+"""Setup script for leapc_cffi - handles build-time logic for gathering Leap SDK files."""
 import os
-import setuptools
 import platform
 import shutil
 
 _HERE = os.path.abspath(os.path.dirname(__file__))
+
+# Import setuptools after gather_leap_sdk runs
+import setuptools
 
 
 def get_system():
@@ -12,9 +15,6 @@ def get_system():
     else:
         return platform.system()
 
-
-with open(os.path.join(_HERE, "README.md"), "r", encoding="utf-8") as fh:
-    long_description = fh.read()
 
 # The resource directory needs to contain the LeapC headers and libraries
 _RESOURCE_DIRECTORY = os.path.join(_HERE, "src/leapc_cffi")
@@ -151,24 +151,9 @@ def gather_leap_sdk():
         setup_symlink(windows_lib_path, symlink_lib_path)
 
 
+# Run the build-time logic
 gather_leap_sdk()
 
-setuptools.setup(
-    name="leapc_cffi",
-    version="0.0.1",
-    author="Ultraleap",
-    description="Python CFFI bindings for LeapC",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
-    include_package_data=True,
-    exclude_package_data={
-        "": ["*.h", "*.lib", "scripts/*"]
-    },  # Excluded from the installed package
-    python_requires=">=3.8",
-    setup_requires=["cffi"],
-    install_requires=["cffi"],
-    ext_package="leapc_cffi",  # The location that the CFFI module will be built
-    cffi_modules=["src/scripts/cffi_build.py:ffibuilder"],
-)
+# The rest of the configuration is in pyproject.toml
+# This minimal setup.py is kept for the build-time logic above
+setuptools.setup()

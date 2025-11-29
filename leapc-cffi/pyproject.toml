@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0", "cffi"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leapc_cffi"
+version = "0.0.1"
+description = "Python CFFI bindings for LeapC"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Ultraleap"}
+]
+dependencies = [
+    "cffi",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+ext-package = "leapc_cffi"
+cffi-modules = ["src/scripts/cffi_build.py:ffibuilder"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.h", "*.so", "*.dylib", "*.dll", "*.lib"]
+
+[tool.setuptools.exclude-package-data]
+"" = ["*.h", "*.lib", "scripts/*"]
