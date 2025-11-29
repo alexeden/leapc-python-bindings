@@ -95,7 +95,7 @@ extra_link_args = {
 os_libraries = {"Windows": ["LeapC"], "Linux": ["LeapC"], "Darwin": ["LeapC.6"]}
 
 ffibuilder.set_source(
-    "_leapc_cffi",
+    "leapc_cffi._leapc_cffi",
     cffi_src,
     libraries=os_libraries[platform.system()],
     include_dirs=[_RESOURCE_DIRECTORY],

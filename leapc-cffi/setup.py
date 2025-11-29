@@ -1,4 +1,5 @@
 """Setup script for leapc_cffi - handles build-time logic for gathering Leap SDK files."""
+
 import os
 import platform
 import shutil
@@ -59,7 +60,11 @@ def setup_symlink(file_path, destination_path):
             print(error)
             error_msg = (
                 "Error "
-                + ("creating symlink to " if get_system() != "Windows" else "copying file ")
+                + (
+                    "creating symlink to "
+                    if get_system() != "Windows"
+                    else "copying file "
+                )
                 + file_path
                 + "."
             )
@@ -117,7 +122,9 @@ def gather_leap_sdk():
 
     # Override
     if _OVERRIDE_HEADER_LOCATION is not None:
-        print("Header override location given, using: " + str(_OVERRIDE_HEADER_LOCATION))
+        print(
+            "Header override location given, using: " + str(_OVERRIDE_HEADER_LOCATION)
+        )
         leapc_header_path = _OVERRIDE_HEADER_LOCATION
 
     if _OVERRIDE_LIB_LOCATION is not None:
@@ -145,7 +152,10 @@ def gather_leap_sdk():
             )
         else:
             windows_lib_path = os.path.join(
-                _OS_DEFAULT_LIB_INSTALL_LOCATION[get_system()], "lib", "x64", "LeapC.lib"
+                _OS_DEFAULT_LIB_INSTALL_LOCATION[get_system()],
+                "lib",
+                "x64",
+                "LeapC.lib",
             )
         symlink_lib_path = os.path.join(_RESOURCE_DIRECTORY, "LeapC.lib")
         setup_symlink(windows_lib_path, symlink_lib_path)
