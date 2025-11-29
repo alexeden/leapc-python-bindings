@@ -37,7 +37,7 @@ _OS_SHARED_OBJECT = {
     "Windows": "LeapC.dll",
     "Linux": "libLeapC.so",
     "Linux-ARM": "libLeapC.so",
-    "Darwin": "libLeapC.5.dylib",
+    "Darwin": "libLeapC.6.dylib",
 }
 
 
@@ -156,4 +156,6 @@ gather_leap_sdk()
 
 # The rest of the configuration is in pyproject.toml
 # This minimal setup.py is kept for the build-time logic above
-setuptools.setup()
+setuptools.setup(
+    cffi_modules=["src/scripts/cffi_build.py:ffibuilder"],
+)

@@ -92,7 +92,7 @@ extra_link_args = {
     "Darwin": ["-Wl,-rpath,@loader_path"],
 }
 
-os_libraries = {"Windows": ["LeapC"], "Linux": ["LeapC"], "Darwin": ["LeapC.5"]}
+os_libraries = {"Windows": ["LeapC"], "Linux": ["LeapC"], "Darwin": ["LeapC.6"]}
 
 ffibuilder.set_source(
     "_leapc_cffi",

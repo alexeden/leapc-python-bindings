@@ -2,6 +2,9 @@
 requires = ["setuptools>=61.0", "cffi"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [project]
 name = "leapc_cffi"
 version = "0.0.1"
@@ -17,14 +20,9 @@ dependencies = [
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-ext-package = "leapc_cffi"
-cffi-modules = ["src/scripts/cffi_build.py:ffibuilder"]
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [tool.setuptools.package-data]
 "*" = ["*.h", "*.so", "*.dylib", "*.dll", "*.lib"]
 
 [tool.setuptools.exclude-package-data]
-"" = ["*.h", "*.lib", "scripts/*"]
+"*" = ["*.h", "*.lib", "scripts/*"]

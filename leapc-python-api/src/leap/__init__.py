@@ -18,7 +18,7 @@ _OS_REQUIRED_CFFI_FILES = {
     "Windows": ["__init__.py", "LeapC.lib", "LeapC.dll"],
     "Linux": ["__init__.py", "libLeapC.so", "libLeapC.so.5"],
     "Linux-ARM": ["__init__.py", "libLeapC.so", "libLeapC.so.5"],
-    "Darwin": ["__init__.py", "libLeapC.5.dylib", "libLeapC.dylib"],
+    "Darwin": ["__init__.py", "libLeapC.6.dylib", "libLeapC.dylib"],
 }
 
 _OS_CFFI_SHARED_OBJECT_PATTERN = {
