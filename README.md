@@ -33,11 +33,14 @@ have the matching python version and have installed Gemini into the default loca
 
 ```
 # Install uv if you haven't already: curl -LsSf https://astral.sh/uv/install.sh | sh
-# Create and activate a virtual environment
-uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-uv pip install -e .
-python examples/tracking_event_example.py
+# Sync workspace dependencies (this will install all packages)
+uv sync
+# For examples that use numpy/opencv (like visualiser.py), sync with extras:
+uv sync --extra examples
+# Then run examples:
+uv run examples/tracking_event_example.py
+# Or for visualiser (after syncing with --extra examples):
+uv run examples/visualiser.py
 ```
 
 ### Custom Install

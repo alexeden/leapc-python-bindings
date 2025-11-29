@@ -15,6 +15,12 @@ dependencies = [
     "leapc_cffi",
 ]
 
+[project.optional-dependencies]
+examples = [
+    "numpy",
+    "opencv-python",
+]
+
 [tool.uv.sources]
 leapc_cffi = { workspace = true }
 
