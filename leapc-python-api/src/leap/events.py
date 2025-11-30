@@ -158,11 +158,11 @@ class TrackingEvent(Event):
         return self._info
 
     @property
-    def timestamp(self):
+    def timestamp(self) -> int:
         return self._info.timestamp
 
     @property
-    def tracking_frame_id(self):
+    def tracking_frame_id(self) -> int:
         return self._tracking_frame_id
 
     @property
@@ -170,7 +170,7 @@ class TrackingEvent(Event):
         return [Hand(self._hands[i]) for i in range(self._num_hands)]
 
     @property
-    def framerate(self):
+    def framerate(self) -> float:
         return self._framerate
 
 

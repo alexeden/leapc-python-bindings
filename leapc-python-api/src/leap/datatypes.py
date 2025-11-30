@@ -40,7 +40,7 @@ class FrameHeader(LeapCStruct):
         return self._data.frame_id
 
     @property
-    def timestamp(self):
+    def timestamp(self) -> int:
         return self._data.timestamp
 
 
