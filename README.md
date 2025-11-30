@@ -107,6 +107,21 @@ greatly appreciated.
 
 Use of the LeapC Python Bindings is subject to the [Apache V2 License Agreement][apache].
 
+## Using as a Dependency
+
+To use these packages as dependencies in other projects, see [DEPENDENCY_USAGE.md](DEPENDENCY_USAGE.md) for detailed instructions on installing from git.
+
+Quick example:
+```toml
+[project]
+dependencies = [
+    "leap @ git+https://github.com/alexeden/leapc-python-bindings.git#subdirectory=leapc-python-api",
+]
+
+[tool.uv.sources]
+leapc_cffi = { git = "https://github.com/alexeden/leapc-python-bindings.git", subdirectory = "leapc-cffi" }
+```
+
 ## Community Support
 
 Our [Discord Server][discord], [Github Discussions][github-discussions] and [Developer Forum][developer-forum] are

@@ -52,7 +52,9 @@ class Recording:
     def read_frame(self):
         frame_size = ffi.new("uint64_t*")
         try:
-            success_or_raise(libleapc.LeapRecordingReadSize, self._recording_ptr[0], frame_size)
+            success_or_raise(
+                libleapc.LeapRecordingReadSize, self._recording_ptr[0], frame_size
+            )
         except LeapUnknownError:
             # When the recording has finished reading, an "UnknownError" is
             # returned from the LeapC API.
@@ -81,7 +83,9 @@ class Recording:
         Raises a RuntimeError if the recording is an invalid state.
         """
         recording_status = ffi.new("LEAP_RECORDING_STATUS*")
-        success_or_raise(libleapc.LeapRecordingGetStatus, self._recording_ptr[0], recording_status)
+        success_or_raise(
+            libleapc.LeapRecordingGetStatus, self._recording_ptr[0], recording_status
+        )
 
         flags = recording_status.mode
         mode = ""

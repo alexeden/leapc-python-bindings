@@ -21,6 +21,8 @@ examples = [
     "opencv-python",
 ]
 
+# Workspace source (used when developing in the workspace)
+# When installing from git, users should override this in their pyproject.toml
 [tool.uv.sources]
 leapc_cffi = { workspace = true }
 

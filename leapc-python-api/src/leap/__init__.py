@@ -1,4 +1,5 @@
-""" Leap Package """
+"""Leap Package"""
+
 import fnmatch
 
 # Set up some functions we want to be available at the top level
