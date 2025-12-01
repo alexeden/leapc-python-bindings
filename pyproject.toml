@@ -3,6 +3,3 @@ members = [
     "leapc-cffi",
     "leapc-python-api",
 ]
-
-[tool.black]
-line-length = 99

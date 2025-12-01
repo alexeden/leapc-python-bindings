@@ -1,4 +1,6 @@
 """Leap Package"""
+# ruff: noqa: E402 F401
+# pyright: reportUnusedImport=false
 
 import fnmatch
 
@@ -66,13 +68,10 @@ if _OVERRIDE_LEAPSDK_LOCATION is not None:
 cffi_path = os.path.join(cffi_location, "leapc_cffi")
 if os.path.isdir(cffi_path):
     ret = check_required_files(cffi_path)
-
-    # TODO: If we can't find leapc_cffi, we could try building it
-
     sys.path.append(cffi_location)
 
     try:
-        from leapc_cffi import ffi, libleapc
+        from leapc_cffi import ffi, libleapc  # noqa: F401
     except ImportError as import_error:
         if not ret:
             error_msg = f"Missing required files within {cffi_location}."

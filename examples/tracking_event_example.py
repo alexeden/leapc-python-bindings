@@ -1,7 +1,7 @@
-"""Prints the palm position of each hand, every frame. When a device is 
-connected we set the tracking mode to desktop and then generate logs for 
-every tracking frame received. The events of creating a connection to the 
-server and a device being plugged in also generate logs. 
+"""Prints the palm position of each hand, every frame. When a device is
+connected we set the tracking mode to desktop and then generate logs for
+every tracking frame received. The events of creating a connection to the
+server and a device being plugged in also generate logs.
 """
 
 import leap
