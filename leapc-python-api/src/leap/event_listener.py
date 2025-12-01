@@ -1,6 +1,30 @@
 from typing import Optional
 
-from .events import Event
+from .events import (
+    ConfigChangeEvent,
+    ConfigResponseEvent,
+    ConnectionEvent,
+    ConnectionLostEvent,
+    DeviceEvent,
+    DeviceFailureEvent,
+    DeviceLostEvent,
+    DeviceStatusChangeEvent,
+    DroppedFrameEvent,
+    Event,
+    EyesEvent,
+    HeadPoseEvent,
+    ImageCompleteEvent,
+    ImageEvent,
+    ImageRequestErrorEvent,
+    IMUEvent,
+    LogEvent,
+    LogEvents,
+    NoneEvent,
+    PointMappingChangeEvent,
+    PolicyEvent,
+    TrackingEvent,
+    TrackingModeEvent,
+)
 from .enums import EventType
 from .exceptions import LeapError
 
@@ -23,70 +47,70 @@ class Listener:
         """If an error occurs in polling, the Exception is passed to this function"""
         pass
 
-    def on_none_event(self, event: Event):
+    def on_none_event(self, event: NoneEvent):
         pass
 
-    def on_connection_event(self, event: Event):
+    def on_connection_event(self, event: ConnectionEvent):
         pass
 
-    def on_connection_lost_event(self, event: Event):
+    def on_connection_lost_event(self, event: ConnectionLostEvent):
         pass
 
-    def on_device_event(self, event: Event):
+    def on_device_event(self, event: DeviceEvent):
         pass
 
-    def on_device_failure_event(self, event: Event):
+    def on_device_failure_event(self, event: DeviceFailureEvent):
         pass
 
-    def on_policy_event(self, event: Event):
+    def on_policy_event(self, event: PolicyEvent):
         pass
 
-    def on_tracking_event(self, event: Event):
+    def on_tracking_event(self, event: TrackingEvent):
         pass
 
-    def on_image_request_error_event(self, event: Event):
+    def on_image_request_error_event(self, event: ImageRequestErrorEvent):
         pass
 
-    def on_image_complete_event(self, event: Event):
+    def on_image_complete_event(self, event: ImageCompleteEvent):
         pass
 
-    def on_log_event(self, event: Event):
+    def on_log_event(self, event: LogEvent):
         pass
 
-    def on_device_lost_event(self, event: Event):
+    def on_device_lost_event(self, event: DeviceLostEvent):
         pass
 
-    def on_config_response_event(self, event: Event):
+    def on_config_response_event(self, event: ConfigResponseEvent):
         pass
 
-    def on_config_change_event(self, event: Event):
+    def on_config_change_event(self, event: ConfigChangeEvent):
         pass
 
-    def on_device_status_change_event(self, event: Event):
+    def on_device_status_change_event(self, event: DeviceStatusChangeEvent):
         pass
 
-    def on_dropped_frame_event(self, event: Event):
+    def on_dropped_frame_event(self, event: DroppedFrameEvent):
         pass
 
-    def on_image_event(self, event: Event):
+    def on_image_event(self, event: ImageEvent):
         pass
 
-    def on_point_mapping_change_event(self, event: Event):
+    def on_point_mapping_change_event(self, event: PointMappingChangeEvent):
         pass
 
-    def on_tracking_mode_event(self, event: Event):
+    def on_tracking_mode_event(self, event: TrackingModeEvent):
         pass
 
-    def on_log_events(self, event: Event):
+    def on_log_events(self, event: LogEvents):
         pass
 
-    def on_head_pose_event(self, event: Event):
+    def on_head_pose_event(self, event: HeadPoseEvent):
         pass
 
-    def on_eyes_event(self, event: Event):
+    def on_eyes_event(self, event: EyesEvent):
         pass
 
-    def on_imu_event(self, event: Event):
+    def on_imu_event(self, event: IMUEvent):
         pass
 
     _EVENT_CALLS = {

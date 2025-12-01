@@ -8,39 +8,43 @@ import leap
 import time
 
 
-class MyListener(leap.Listener):
+class Listener(leap.Listener):
     def on_connection_event(self, event):
         print("Connected")
 
     def on_device_event(self, event):
+        print(f"Device event: {event.type}")
         try:
             with event.device.open():
                 info = event.device.get_info()
+                print(f"Device info: {info.serial} {info.status}")
         except leap.LeapCannotOpenDeviceError:
             info = event.device.get_info()
 
         print(f"Found device {info.serial}")
 
     def on_tracking_event(self, event):
-        print(f"Frame {event.tracking_frame_id} with {len(event.hands)} hands.")
+        # print(f"Tracking event: {event.type}")
+        # print(f"Frame {event.tracking_frame_id} with {len(event.hands)} hands.")
         for hand in event.hands:
             hand_type = "left" if str(hand.type) == "HandType.Left" else "right"
-            print(
-                f"Hand id {hand.id} is a {hand_type} hand with position ({hand.palm.position.x}, {hand.palm.position.y}, {hand.palm.position.z})."
-            )
+            print(hand.pinch_distance, hand.pinch_strength)
+            # print(
+            #     f"Hand id {hand.id} is a {hand_type} hand with position ({hand.palm.position.x}, {hand.palm.position.y}, {hand.palm.position.z})."
+            # )
 
 
 def main():
-    my_listener = MyListener()
-
     connection = leap.Connection()
-    connection.add_listener(my_listener)
+    connection.add_listener(Listener())
 
     running = True
 
     with connection.open():
         connection.set_tracking_mode(leap.TrackingMode.Desktop)
         while running:
+            # for device in connection.get_devices():
+            #     print(f"Device {device.get_info().serial} connected")
             time.sleep(1)
 
 
